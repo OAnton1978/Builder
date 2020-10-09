@@ -31,7 +31,7 @@ public class PersonBuilder {
         if (setName == null || setSurname == null) {
             throw new IllegalStateException("Вы ввели не все обязательные параметры");
         }
-        if (setAge <= 0) {
+        if (setAge < 0) {
             throw new IllegalArgumentException("Не корректно указан возраст");
         }
         return new Person(setName, setSurname, setAge, setAddress);

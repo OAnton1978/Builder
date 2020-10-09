@@ -33,15 +33,13 @@ public class Person {
     }
 
 
-
-        public PersonBuilder newChildBuilder() {
-            return new PersonBuilder()
-                    .setSurname(getSurname())
-                    .setAddress(getAddress())
-                    .setAge(8)                   //возраст ребенка
-                    ;
-
-
+    public PersonBuilder newChildBuilder() {
+        return new PersonBuilder()
+                .setSurname(getSurname())
+                .setAddress(getAddress())
+                // .setAge(8)                   //без setAge создастся "новорожденный". Также возраст можно "нагнать" вызвав метод happyBirthday()
+                // необходимое кол-во раз, но проще сеттером при создани
+                ;
     }
 
     public boolean hasAge() {
@@ -49,14 +47,14 @@ public class Person {
             return false;
         }
         return true;
-        }
+    }
 
-        public boolean hasAddress() {
-            if (getAddress().isEmpty()) {
-                return false;
-            }
-            return true;
+    public boolean hasAddress() {
+        if (getAddress() == null) {
+            return false;
         }
+        return true;
+    }
 
     public String getName() {
         return name;
@@ -70,6 +68,10 @@ public class Person {
         return age;
     }
 
+    public void setAge(int age) {
+        this.age = age;
+    }
+
     public String getAddress() {
         return address;
     }
@@ -78,12 +80,9 @@ public class Person {
         this.address = address;
     }
 
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void happyBirthday() {
-        int ageTemp = getAge() +1;
+        //     if (getAge())
+        int ageTemp = getAge() + 1;
         setAge(ageTemp);
     }
 
